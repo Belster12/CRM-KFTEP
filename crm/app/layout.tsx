@@ -37,13 +37,22 @@ export default function RootLayout({
       className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, "font-sans", raleway.variable)}
     >
       <body>
-        <TooltipProvider>
+        <SidebarProvider style={
+          {
+            "--sidebar-width": "calc(var(--spacing) * 72)",
+            "--header-height": "calc(var(--spacing) * 12)",
+          } as React.CSSProperties
+        }>
+          <TooltipProvider>
+            <AppSidebar variant="inset" />
             <div className="flex min-h-screen w-full">
               <main className="flex-1 p-4">
+                <SidebarTrigger />
                 {children}
               </main>
             </div>
-        </TooltipProvider>
+          </TooltipProvider>
+        </SidebarProvider>
       </body>
     </html>
   );

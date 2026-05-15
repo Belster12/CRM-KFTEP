@@ -1,7 +1,6 @@
 "use client";
 import { students } from "@/lib/data/students";
 import { useState } from "react";
-import { set } from "zod";
 
 
 
@@ -64,7 +63,7 @@ export default function StudentPage() {
         >
           Sort: {sortOrder === "asc" ? "A-Z" : "Z-A"}
         </button>
-      </div>
+      </div>    
       <div className="border rounded-lg overflow-hidden">
         <table className="w-full">
           <thead className="bg-zinc-100 dark:bg-zinc-900">

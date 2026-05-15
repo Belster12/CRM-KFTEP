@@ -33,10 +33,34 @@ const data = {
       ),
     },
     {
-      title: "Lifecycle",
+      title: "Students",
       url: "#",
       icon: (
         <ListIcon
+        />
+      ),
+    },
+    {
+      title: "Courses",
+      url: "#",
+      icon: (
+        <ChartBarIcon
+        />
+      ),
+    },
+    {
+      title: "Teachers",
+      url: "#",
+      icon: (
+        <FolderIcon
+        />
+      ),
+    },
+    {
+      title: "Payments",
+      url: "#",
+      icon: (
+        <UsersIcon
         />
       ),
     },
@@ -45,22 +69,6 @@ const data = {
       url: "#",
       icon: (
         <ChartBarIcon
-        />
-      ),
-    },
-    {
-      title: "Projects",
-      url: "#",
-      icon: (
-        <FolderIcon
-        />
-      ),
-    },
-    {
-      title: "Team",
-      url: "#",
-      icon: (
-        <UsersIcon
         />
       ),
     },

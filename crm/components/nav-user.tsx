@@ -21,6 +21,7 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar"
 import { EllipsisVerticalIcon, CircleUserRoundIcon, CreditCardIcon, BellIcon, LogOutIcon } from "lucide-react"
+import { SignOutButton } from "./SignOutButoon"
 
 export function NavUser({
   user,
@@ -97,7 +98,7 @@ export function NavUser({
             <DropdownMenuItem>
               <LogOutIcon
               />
-              Log out
+              <SignOutButton />
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

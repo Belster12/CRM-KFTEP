@@ -3,7 +3,7 @@
 import { createClient } from '@/lib/server'
 import { revalidatePath } from 'next/cache'
 
-export async function addStudent(formData: FormData) {
+export async function addStudent(prevstate: any, formData: FormData) {
   const supabase = await createClient()
 
   const {

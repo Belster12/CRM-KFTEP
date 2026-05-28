@@ -38,38 +38,38 @@ const data = {
         />
       ),
     },
-    {
-      title: "Courses",
-      url: "#",
-      icon: (
-        <ChartBarIcon
-        />
-      ),
-    },
-    {
-      title: "Teachers",
-      url: "#",
-      icon: (
-        <FolderIcon
-        />
-      ),
-    },
-    {
-      title: "Payments",
-      url: "#",
-      icon: (
-        <UsersIcon
-        />
-      ),
-    },
-    {
-      title: "Analytics",
-      url: "#",
-      icon: (
-        <ChartBarIcon
-        />
-      ),
-    },
+    // {
+    //   title: "Courses",
+    //   url: "#",
+    //   icon: (
+    //     <ChartBarIcon
+    //     />
+    //   ),
+    // },
+    // {
+    //   title: "Teachers",
+    //   url: "#",
+    //   icon: (
+    //     <FolderIcon
+    //     />
+    //   ),
+    // },
+    // {
+    //   title: "Payments",
+    //   url: "#",
+    //   icon: (
+    //     <UsersIcon
+    //     />
+    //   ),
+    // },
+    // {
+    //   title: "Analytics",
+    //   url: "#",
+    //   icon: (
+    //     <ChartBarIcon
+    //     />
+    //   ),
+    // },
   ],  
   navSecondary: [
     {
@@ -80,22 +80,22 @@ const data = {
         />
       ),
     },
-    {
-      title: "Get Help",
-      url: "#",
-      icon: (
-        <CircleHelpIcon
-        />
-      ),
-    },
-    {
-      title: "Search",
-      url: "#",
-      icon: (
-        <SearchIcon
-        />
-      ),
-    },
+    // {
+    //   title: "Get Help",
+    //   url: "#",
+    //   icon: (
+    //     <CircleHelpIcon
+    //     />
+    //   ),
+    // },
+    // {
+    //   title: "Search",
+    //   url: "#",
+    //   icon: (
+    //     <SearchIcon
+    //     />
+    //   ),
+    // },
   ],
 }
 

@@ -1,6 +1,11 @@
 'use client'
 
-import { useMemo, useState } from 'react'
+import { useMemo, useState, useTransition } from 'react'
+
+import {
+  deleteStudent,
+  toggleStudentStatus
+} from '@/app/action/studentsBD'
 
 type Student = {
   id: string
@@ -18,6 +23,8 @@ type Props = {
 export function StudentsSearch({ students }: Props) {
   const [search, setSearch] = useState('')
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc')
+
+  const [isPending, startTransition] = useTransition()
 
   const filteredStudents = useMemo(() => {
     const searchLower = search.toLowerCase()
@@ -54,6 +61,24 @@ export function StudentsSearch({ students }: Props) {
     }
   }
 
+  const handleToggle = (id: string) => {
+    startTransition(async () => {
+      await toggleStudentStatus(id)
+    })
+  }
+
+  const handleDelete = (id: string) => {
+    const confirmed = confirm(
+      'Are you sure you want to delete this student?'
+    )
+
+    if (!confirmed) return
+
+    startTransition(async () => {
+      await deleteStudent(id)
+    })
+  }
+
   return (
     <div className="space-y-4">
 
@@ -78,14 +103,15 @@ export function StudentsSearch({ students }: Props) {
 
       <div className="border rounded-lg overflow-hidden">
         <table className="w-full">
+
           <thead className="bg-zinc-100 dark:bg-zinc-900">
-            <tr
-            >
+            <tr>
               <th className="p-3 text-left">Name</th>
               <th className="p-3 text-left">Email</th>
               <th className="p-3 text-left">Course</th>
               <th className="p-3 text-left">Phone</th>
               <th className="p-3 text-left">Status</th>
+              <th className="p-3 text-left">Actions</th>
             </tr>
           </thead>
 
@@ -95,10 +121,21 @@ export function StudentsSearch({ students }: Props) {
                 key={student.id}
                 className="border-t"
               >
-                <td className="p-3">{student.full_name}</td>
-                <td className="p-3">{student.email}</td>
-                <td className="p-3">{student.course}</td>
-                <td className="p-3">{student.phone}</td>
+                <td className="p-3">
+                  {student.full_name}
+                </td>
+
+                <td className="p-3">
+                  {student.email}
+                </td>
+
+                <td className="p-3">
+                  {student.course}
+                </td>
+
+                <td className="p-3">
+                  {student.phone}
+                </td>
 
                 <td className="p-3">
                   <span
@@ -109,9 +146,33 @@ export function StudentsSearch({ students }: Props) {
                     {student.status}
                   </span>
                 </td>
+
+                <td className="p-3">
+                  <div className="flex gap-2">
+
+                    <button
+                      onClick={() => handleToggle(student.id)}
+                      disabled={isPending}
+                      className="border rounded-lg px-3 py-1 text-sm"
+                    >
+                      Toggle
+                    </button>
+
+                    <button
+                      onClick={() => handleDelete(student.id)}
+                      disabled={isPending}
+                      className="border border-red-500 text-red-500 rounded-lg px-3 py-1 text-sm"
+                    >
+                      Delete
+                    </button>
+
+                  </div>
+                </td>
+
               </tr>
             ))}
           </tbody>
+
         </table>
       </div>
 

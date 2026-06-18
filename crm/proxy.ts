@@ -12,14 +12,12 @@ export async function proxy(request: NextRequest) {
 
   const {data: {user}} = await supabase.auth.getUser()
 const isAuthPage = request.nextUrl.pathname.startsWith('/auth')
-  // 🔒 если нет user → только на login
   if (!user && !isAuthPage) {
     const url = request.nextUrl.clone()
     url.pathname = '/auth/login'
     return NextResponse.redirect(url)
   }
 
-  // 🔁 если есть user и он на auth страницах → кидаем в CRM
   if (user && isAuthPage) {
     const url = request.nextUrl.clone()
     url.pathname = '/'

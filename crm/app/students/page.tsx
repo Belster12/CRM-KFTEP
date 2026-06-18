@@ -12,16 +12,16 @@ export default async function StudentPage() {
     .order('created_at', { ascending: false })
 
   return (
-    <div className="space-y-6">
+    <div className="p-8 space-y-6">
+      <div className="flex justify-between items-center">
+        <h1 className="text-2xl font-bold">
+          Клієнти
+        </h1>
 
-      <h1 className="text-3xl font-bold">
-        Students
-      </h1>
-
-      <StudentsForm />
-
+        <StudentsForm />
+      </div>
       <StudentsSearch students={students || []} />
 
-    </div>
+    </div >
   )
 }

@@ -17,13 +17,13 @@ import { LayoutDashboardIcon, ListIcon, ChartBarIcon, FolderIcon, UsersIcon, Cam
 
 const data = {
   user: {
-    name: "shadcn",
+    name: "KFKEP",
     email: "m@example.com",
     avatar: "/avatars/shadcn.jpg",
   },
   navMain: [
     {
-      title: "Dashboard",
+      title: "Головна",
       url: "/",
       icon: (
         <LayoutDashboardIcon
@@ -31,10 +31,18 @@ const data = {
       ),
     },
     {
-      title: "Students",
+      title: "Клієнти",
       url: "/students",
       icon: (
         <UsersIcon
+        />
+      ),
+    },
+    {
+      title: "Замовлення",
+      url: "/orders",
+      icon: (
+        <ListIcon
         />
       ),
     },
@@ -111,7 +119,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             >
               <a href="#">
                 <CommandIcon className="size-5!" />
-                <span className="text-base font-semibold">Acme Inc.</span>
+                <span className="text-base font-semibold">CRM</span>
               </a>
             </SidebarMenuButton>
           </SidebarMenuItem>

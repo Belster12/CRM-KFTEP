@@ -1,73 +1,114 @@
 'use client'
 
 import { addStudent } from '@/app/action/studentsBD'
-import { useRef, useEffect, useActionState } from 'react'
+import { useRef, useEffect, useState, useActionState } from 'react'
+import { Button } from "@/components/ui/button"
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+
 const initialState = {
-  error: ''
+  error: '',
 }
 
 export function StudentsForm() {
-  const [state, formAction] = useActionState(addStudent, initialState)
-
+  // Додаємо isPending для індикації завантаження
+  const [state, formAction, isPending] = useActionState(addStudent, initialState)
+  
   const formRef = useRef<HTMLFormElement>(null)
+  // Стан для керування відкриттям/закриттям модалки
+  const [isOpen, setIsOpen] = useState(false)
 
   useEffect(() => {
     if (state.success) {
       formRef.current?.reset()
+      setIsOpen(false) // Автоматично закриваємо діалог після успіху
     }
   }, [state.success])
 
   return (
-    <form
-      ref={formRef}
-      className="space-y-4"
-      action={formAction}
-    >
-      <div className="flex gap-2">
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
+      <DialogTrigger asChild>
+        <Button variant="default">Додати клієнта</Button>
+      </DialogTrigger>
+      <DialogContent className="sm:max-w-sm">
+        <DialogHeader>
+          <DialogTitle>Новий клієнт</DialogTitle>
+          <DialogDescription>
+            Введіть дані клієнта. Натисніть зберегти, коли закінчите.
+          </DialogDescription>
+        </DialogHeader>
 
-        <input
-          name="full_name"
-          type="text"
-          placeholder="Full name"
-          className="border rounded-lg p-2"
-          required
-        />
+        {/* Форма перенесена ВЕРЕДИНУ DialogContent */}
+        <form ref={formRef} action={formAction} className="space-y-4">
+          {state.error && (
+            <p className="text-sm text-red-500 font-medium">
+              {state.error}
+            </p>
+          )}
 
-        <input
-          name="email"
-          type="email"
-          placeholder="Email"
-          className="border rounded-lg p-2"
-        />
+          {/* Використовуємо компоненти shadcn: Label + Input */}
+          <div className="space-y-2">
+            <Label htmlFor="full_name">Повне ім'я</Label>
+            <Input 
+              id="full_name"
+              name="full_name" 
+              type="text" 
+              placeholder="Іван Іванов" 
+              required 
+            />
+          </div>
 
-        <input
-          name="phone"
-          type="text"
-          placeholder="Phone"
-          className="border rounded-lg p-2"
-        />
+          <div className="space-y-2">
+            <Label htmlFor="email">Email</Label>
+            <Input 
+              id="email"
+              name="email" 
+              type="email" 
+              placeholder="example@kordon.com" 
+            />
+          </div>
 
-        <input
-          name="course"
-          type="text"
-          placeholder="Course"
-          className="border rounded-lg p-2"
-        />
+          <div className="space-y-2">
+            <Label htmlFor="phone">Телефон</Label>
+            <Input 
+              id="phone"
+              name="phone" 
+              type="text" 
+              placeholder="+380..." 
+            />
+          </div>
 
-      </div>
+          <div className="space-y-2">
+            <Label htmlFor="description">Опис</Label>
+            <Input 
+              id="description"
+              name="description" 
+              type="text" 
+              placeholder="..." 
+            />
+          </div>
 
-      {state.error && (
-        <p className="text-sm text-red-500">
-          {state.error}
-        </p>
-      )}
-
-      <button
-        type="submit"
-        className="bg-black text-white rounded-lg px-4 py-2"
-      >
-        Add student
-      </button>
-    </form>
+          <DialogFooter className="pt-4">
+            <DialogClose asChild>
+              <Button variant="outline" type="button">Скасувати</Button>
+            </DialogClose>
+            {/* Використовуємо shadcn Button із станом isPending */}
+            <Button type="submit" disabled={isPending}>
+              {isPending ? 'Збереження...' : 'Зберегти'}
+            </Button>
+          </DialogFooter>
+        </form>
+      </DialogContent>
+    </Dialog>
   )
 }

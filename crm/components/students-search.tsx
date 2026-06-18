@@ -69,7 +69,7 @@ export function StudentsSearch({ students }: Props) {
 
   const handleDelete = (id: string) => {
     const confirmed = confirm(
-      'Are you sure you want to delete this student?'
+      'Are you sure you want to delete this client?'
     )
 
     if (!confirmed) return
@@ -81,12 +81,11 @@ export function StudentsSearch({ students }: Props) {
 
   return (
     <div className="space-y-4">
-
       <div className="flex items-center gap-4">
         <input
           type="text"
-          placeholder="Search students..."
-          className="border rounded-lg p-2"
+          placeholder="Пошук клієнта..."
+          className="border rounded-lg p-2 "
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
@@ -155,7 +154,7 @@ export function StudentsSearch({ students }: Props) {
                       disabled={isPending}
                       className="border rounded-lg px-3 py-1 text-sm"
                     >
-                      Toggle
+                      статус
                     </button>
 
                     <button
@@ -163,7 +162,7 @@ export function StudentsSearch({ students }: Props) {
                       disabled={isPending}
                       className="border border-red-500 text-red-500 rounded-lg px-3 py-1 text-sm"
                     >
-                      Delete
+                      Видалити
                     </button>
 
                   </div>

@@ -7,7 +7,7 @@ export async function proxy(request: NextRequest) {
       headers: request.headers
     }
   })
-
+// 111
   const supabase = await createClient()
 
   const {data: {user}} = await supabase.auth.getUser()

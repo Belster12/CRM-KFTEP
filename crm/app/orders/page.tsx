@@ -6,11 +6,9 @@ import { OrderForm } from '@/components/order-form'
 export default async function OrdersPage() {
   const supabase = await createClient()
 
-  // Отримуємо студентів для випадаючого списку
+
   const { data: students } = await supabase.from('students').select('id, full_name')
-  
-  // Отримуємо замовлення з приєднаними даними студентів
-  const { data: orders } = await supabase
+    const { data: orders } = await supabase
     .from('orders')
     .select(`
       id,

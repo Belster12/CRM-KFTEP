@@ -44,7 +44,7 @@ export function StudentsForm() {
         <DialogHeader>
           <DialogTitle>Новий клієнт</DialogTitle>
           <DialogDescription>
-            Введіть дані клієнта. Натисніть зберегти, коли закінчите.
+            Введіть дані клієнта. Натисніть зберегти, коли закінчите
           </DialogDescription>
         </DialogHeader>
 

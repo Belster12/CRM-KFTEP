@@ -44,7 +44,7 @@ export function OrderForm({ students }: { students: any[] }) {
         <DialogHeader>
           <DialogTitle>Нове замовлення</DialogTitle>
           <DialogDescription>
-            Оберіть студента та введіть дані замовлення.
+            Оберіть замовника та введіть дані замовлення.
           </DialogDescription>
         </DialogHeader>
 
@@ -55,10 +55,10 @@ export function OrderForm({ students }: { students: any[] }) {
 
           {/* Вибір студента через Select */}
           <div className="space-y-2">
-            <Label htmlFor="student_id">Студент</Label>
+            <Label htmlFor="student_id">Замовник</Label>
             <Select name="student_id" required>
               <SelectTrigger>
-                <SelectValue placeholder="Оберіть студента" />
+                <SelectValue placeholder="Оберіть замовника" />
               </SelectTrigger>
               <SelectContent>
                 {students.map((student) => (

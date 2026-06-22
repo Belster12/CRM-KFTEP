@@ -1,5 +1,4 @@
 import { Badge } from '@/components/ui/badge'
-
 import {
   Card,
   CardAction,
@@ -8,7 +7,6 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
-
 import {
   Users,
   GraduationCap,
@@ -17,32 +15,30 @@ import {
 } from 'lucide-react'
 
 type Props = {
-  totalStudents: number
-  activeStudents: number
-  finishedStudents: number
-  newStudents: number
+  totalStudents: number      // Загальна кількість клієнтів
+  activeStudents: number     // Активні клієнти
+  finishedStudents: number   // Клієнти, що завершили навчання
+  newStudents: number        // Нові клієнти за місяць
 }
 
 export function SectionCards({
-  totalStudents,
-  activeStudents,
-  finishedStudents,
-  newStudents,
+  totalStudents: totalClients,
+  activeStudents: activeClients,
+  finishedStudents: finishedClients,
+  newStudents: newClients,
 }: Props) {
   return (
     <div className="grid grid-cols-1 gap-4 px-4 lg:px-6 @xl/main:grid-cols-2 @5xl/main:grid-cols-4">
 
-      {/* TOTAL */}
-
+      {/* ВСЬОГО КЛІЄНТІВ */}
       <Card>
         <CardHeader>
-
           <CardDescription>
-            Total Students
+            Всього клієнтів
           </CardDescription>
 
           <CardTitle className="text-3xl font-bold">
-            {totalStudents}
+            {totalClients}
           </CardTitle>
 
           <CardAction>
@@ -50,25 +46,22 @@ export function SectionCards({
               <Users className="size-4" />
             </Badge>
           </CardAction>
-
         </CardHeader>
 
         <CardFooter className="text-sm text-muted-foreground">
-          Total registered students
+          Загальна кількість зареєстрованих клієнтів
         </CardFooter>
       </Card>
 
-      {/* ACTIVE */}
-
+      {/* АКТИВНІ */}
       <Card>
         <CardHeader>
-
           <CardDescription>
-            Active Students
+            Активні клієнти
           </CardDescription>
 
           <CardTitle className="text-3xl font-bold">
-            {activeStudents}
+            {activeClients}
           </CardTitle>
 
           <CardAction>
@@ -76,25 +69,22 @@ export function SectionCards({
               <UserCheck className="size-4" />
             </Badge>
           </CardAction>
-
         </CardHeader>
 
         <CardFooter className="text-sm text-muted-foreground">
-          Currently studying
+          Клієнти, які навчаються на цей час
         </CardFooter>
       </Card>
 
-      {/* FINISHED */}
-
+      {/* ЗАВЕРШИЛИ */}
       <Card>
         <CardHeader>
-
           <CardDescription>
-            Finished Courses
+            Завершили навчання
           </CardDescription>
 
           <CardTitle className="text-3xl font-bold">
-            {finishedStudents}
+            {finishedClients}
           </CardTitle>
 
           <CardAction>
@@ -102,25 +92,22 @@ export function SectionCards({
               <GraduationCap className="size-4" />
             </Badge>
           </CardAction>
-
         </CardHeader>
 
         <CardFooter className="text-sm text-muted-foreground">
-          Students who completed courses
+          Клієнти, які успішно закінчили курси
         </CardFooter>
       </Card>
 
-      {/* NEW */}
-
+      {/* НОВІ ЗА МІСЯЦЬ */}
       <Card>
         <CardHeader>
-
           <CardDescription>
-            New This Month
+            Нові за місяць
           </CardDescription>
 
           <CardTitle className="text-3xl font-bold">
-            {newStudents}
+            {newClients}
           </CardTitle>
 
           <CardAction>
@@ -128,11 +115,10 @@ export function SectionCards({
               <TrendingUpIcon className="size-4" />
             </Badge>
           </CardAction>
-
         </CardHeader>
 
         <CardFooter className="text-sm text-muted-foreground">
-          New registrations this month
+          Нові реєстрації у поточному місяці
         </CardFooter>
       </Card>
 

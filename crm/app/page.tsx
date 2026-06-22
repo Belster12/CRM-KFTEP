@@ -8,7 +8,6 @@ import {
   SidebarProvider,
 } from "@/components/ui/sidebar"
 
-import data from "./dashboard/data.json"
 
 export default async function Page() {
   const supabase = await createClient()

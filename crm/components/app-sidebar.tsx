@@ -13,7 +13,16 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
-import { LayoutDashboardIcon, ListIcon, ChartBarIcon, FolderIcon, UsersIcon, CameraIcon, FileTextIcon, Settings2Icon, CircleHelpIcon, SearchIcon, DatabaseIcon, FileChartColumnIcon, FileIcon, CommandIcon } from "lucide-react"
+import { 
+  LayoutDashboardIcon, 
+  ListIcon, 
+  UsersIcon, 
+  Settings2Icon, 
+  DatabaseIcon, 
+  CommandIcon,
+  ReceiptIcon, // Для транзакцій
+  TagsIcon     // Для категорій
+} from "lucide-react"
 
 const data = {
   user: {
@@ -25,85 +34,49 @@ const data = {
     {
       title: "Головна",
       url: "/",
-      icon: (
-        <LayoutDashboardIcon
-        />
-      ),
+      icon: <LayoutDashboardIcon />,
     },
     {
       title: "Клієнти",
       url: "/students",
-      icon: (
-        <UsersIcon
-        />
-      ),
+      icon: <UsersIcon />,
     },
     {
       title: "Замовлення",
       url: "/orders",
-      icon: (
-        <ListIcon
-        />
-      ),
+      icon: <ListIcon />,
     },
-    // {
-    //   title: "Courses",
-    //   url: "#",
-    //   icon: (
-    //     <ChartBarIcon
-    //     />
-    //   ),
-    // },
-    // {
-    //   title: "Teachers",
-    //   url: "#",
-    //   icon: (
-    //     <FolderIcon
-    //     />
-    //   ),
-    // },
-    // {
-    //   title: "Payments",
-    //   url: "#",
-    //   icon: (
-    //     <UsersIcon
-    //     />
-    //   ),
-    // },
-    // {
-    //   title: "Analytics",
-    //   url: "#",
-    //   icon: (
-    //     <ChartBarIcon
-    //     />
-    //   ),
-    // },
+    {
+      title: "Фінанси",
+      url: "/finance",
+      icon: <DatabaseIcon />,
+      // Робимо розділ активним за замовчуванням (якщо підтримується вашим NavMain)
+      isActive: true, 
+      // Додаємо вкладені пункти меню
+      items: [
+        {
+          title: "Огляд (Дашборд)",
+          url: "/finance",
+        },
+        {
+          title: "Транзакції",
+          url: "/finance/transaction", // або /finance/transactions відповідно до ваших роутів
+          icon: <ReceiptIcon />,
+        },
+        {
+          title: "Категорії",
+          url: "/finance/categories",
+          icon: <TagsIcon />,
+        },
+      ],
+    },
   ],  
   navSecondary: [
     {
       title: "Settings",
       url: "#",
-      icon: (
-        <Settings2Icon
-        />
-      ),
+      icon: <Settings2Icon />,
     },
-    // {
-    //   title: "Get Help",
-    //   url: "#",
-    //   icon: (
-    //     <CircleHelpIcon
-    //     />
-    //   ),
-    // },
-    // {
-    //   title: "Search",
-    //   url: "#",
-    //   icon: (
-    //     <SearchIcon
-    //     />
-    //   ),
-    // },
   ],
 }
 

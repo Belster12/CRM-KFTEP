@@ -4,7 +4,7 @@ import { useMemo, useState, useTransition } from 'react'
 import {
   deleteOrder,
   toggleOrderStatus
-} from '@/app/action/ordersDB'
+} from '@/app/action/ordersBD'
 
 type Order = {
   id: string
